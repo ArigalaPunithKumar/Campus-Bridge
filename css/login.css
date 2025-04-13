@@ -1,0 +1,133 @@
+.login-container {
+    max-width: 450px;
+    margin: 10vh auto;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn var(--animation-duration-medium) var(--easing-decelerate);
+}
+
+@media (max-width: 768px) {
+    .login-container {
+        margin: 5vh auto;
+        padding: 30px;
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        margin: 2vh auto;
+        padding: 20px;
+        max-width: 95%;
+    }
+}
+
+.login-container .logo {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+
+.login-container h1 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.login-container p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+#login-form .form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+#login-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+#login-form input[type="email"],
+#login-form input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: all var(--animation-duration-fast) var(--easing-standard);
+}
+
+#login-form input[type="email"]:focus,
+#login-form input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    transform: scale(1.01);
+}
+
+#login-form button {
+    width: 100%;
+    padding: 12px;
+    font-size: 1.1em;
+    margin-top: 10px;
+    transition: all var(--animation-duration-fast) var(--easing-standard);
+}
+
+#login-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#login-form button:active {
+    transform: translateY(0);
+}
+
+.loading-state {
+    display: none;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.loading-state.active {
+    display: block;
+    animation: fadeIn var(--animation-duration-medium) var(--easing-decelerate);
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
+    border: 4px solid rgba(0, 123, 255, 0.2);
+    border-radius: 50%;
+    border-top-color: #007bff;
+    animation: spin 1s linear infinite;
+}
+
+.mock-logins {
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #888;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: left;
+}
+
+.mock-logins p {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #666;
+}
+
+.mock-logins ul {
+    list-style: none;
+    padding: 0;
+}
+
+.mock-logins li {
+    margin-bottom: 3px;
+}

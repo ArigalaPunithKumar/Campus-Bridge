@@ -1,0 +1,82 @@
+:root {
+  --animation-duration-fast: 0.2s;
+  --animation-duration-medium: 0.3s;
+  --animation-duration-slow: 0.5s;
+  --easing-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* Micro-interactions */
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Button animations */
+.button-animate {
+  transition: all var(--animation-duration-fast) var(--easing-standard);
+}
+
+.button-animate:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.button-animate:active {
+  transform: translateY(0);
+}
+
+/* Form field animations */
+.form-field-animate {
+  transition: all var(--animation-duration-medium) var(--easing-standard);
+}
+
+.form-field-animate:focus {
+  transform: scale(1.01);
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+}
+
+/* Loading animations */
+@keyframes loadingPulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.loading-animation {
+  animation: loadingPulse 1.5s var(--easing-standard) infinite;
+}
+
+/* Page transitions */
+.page-transition {
+  animation: fadeIn var(--animation-duration-slow) var(--easing-decelerate);
+}
+
+.section-transition {
+  animation: slideUp var(--animation-duration-medium) var(--easing-decelerate);
+}
+
+/* Utility classes */
+.animate-fade-in {
+  animation: fadeIn var(--animation-duration-medium) var(--easing-standard);
+}
+
+.animate-slide-up {
+  animation: slideUp var(--animation-duration-medium) var(--easing-standard);
+}

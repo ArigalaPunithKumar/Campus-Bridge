@@ -1,0 +1,255 @@
+/* css/practice.css */
+
+body {
+    margin: 0;
+    font-family: sans-serif; /* Inherit from style.css or set your own */
+    background-color: #f4f7f6; /* Match main style */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.practice-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allow container to fill height */
+}
+
+.practice-header {
+    background-color: #004085; /* Match dashboard */
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.practice-header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.practice-header .back-link {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+.practice-header .back-link:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.practice-main {
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden; /* Prevent scrollbars on main flex container */
+    padding: 15px;
+    gap: 15px;
+}
+
+.practice-panel {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    padding: 20px;
+    overflow-y: auto; /* Allow individual panels to scroll */
+}
+
+.problem-panel {
+    flex: 1; /* Takes 1 part of the space */
+    min-width: 250px;
+    max-width: 350px; /* Limit width */
+}
+
+.problem-panel h2 {
+    margin-top: 0;
+    color: #0056b3; /* Match dashboard */
+}
+
+.editor-panel {
+    flex: 3; /* Takes 3 parts of the space */
+    display: flex;
+    flex-direction: column;
+}
+
+.editor-controls {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 15px;
+    margin-bottom: 15px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    align-items: center;
+}
+
+.control-group label {
+    margin-right: 5px;
+    font-weight: bold;
+}
+
+#language-select {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.button-group {
+    margin-left: auto; /* Push run button to the right */
+}
+
+.ai-button-group .btn-ai {
+    font-size: 0.9em;
+    padding: 6px 10px;
+}
+
+/* Ensure editor has a defined height */
+.code-editor-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex-grow: 1; /* Allow editor to take available vertical space */
+    min-height: 300px; /* Minimum height */
+    position: relative; /* Needed for CodeMirror internals */
+    margin-bottom: 15px;
+}
+
+/* Style CodeMirror itself */
+.CodeMirror {
+    height: 100% !important; /* Override default height */
+    font-size: 14px; /* Adjust as needed */
+}
+
+
+.io-section {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    min-height: 150px; /* Ensure some space for I/O */
+    max-height: 40%; /* Limit height */
+    flex-shrink: 0; /* Prevent shrinking too much */
+}
+
+.input-area, .output-area {
+    flex: 1; /* Share space equally */
+    display: flex;
+    flex-direction: column;
+}
+
+.input-area textarea {
+    flex-grow: 1;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: monospace;
+    resize: none; /* Disable manual resize */
+    border: 1px solid #ccc;
+}
+.input-area label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.output-area {
+    background-color: #f8f9fa;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    transition: border-color 0.3s ease; /* For status indication */
+}
+
+.output-area h4 {
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+    font-size: 1em;
+    color: #333;
+}
+
+#output-content {
+    flex-grow: 1;
+    white-space: pre-wrap; /* Wrap output text */
+    word-wrap: break-word;
+    font-family: monospace;
+    font-size: 0.9em;
+    overflow-y: auto; /* Allow scrolling */
+    margin: 0; /* Remove default pre margins */
+}
+
+/* Output Status Styling */
+#output-content.status-processing { color: #555; font-style: italic; }
+#output-content.status-accepted { color: #28a745; }
+#output-content.status-error,
+#output-content.status-compile-error,
+#output-content.status-runtime-error { color: #dc3545; }
+#output-content.status-unknown { color: #6c757d; }
+
+.ai-feedback-area {
+    background-color: #e9ecef;
+    border: 1px solid #d6d8db;
+    border-radius: 4px;
+    padding: 15px;
+    min-height: 100px;
+    max-height: 200px; /* Limit height */
+    overflow-y: auto;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+.ai-feedback-area h4 {
+    margin: 0 0 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #ccc;
+    font-size: 1em;
+    color: #333;
+}
+#ai-content {
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #495057;
+}
+#ai-content pre {
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #d6d8db;
+    font-family: monospace;
+}
+#ai-content .error-message {
+    color: #dc3545;
+    font-weight: bold;
+}
+
+
+.practice-footer {
+    background-color: #e9ecef; /* Match dashboard */
+    color: #6c757d;
+    text-align: center;
+    padding: 10px;
+    font-size: 0.8em;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .practice-main {
+        flex-direction: column;
+        overflow: auto; /* Allow main area to scroll */
+    }
+    .problem-panel {
+        max-width: none; /* Allow full width */
+        flex: none; /* Don't try to take fraction of space */
+        height: auto; /* Adjust height based on content */
+        max-height: 30vh; /* Limit height */
+    }
+    .editor-panel {
+        flex: none; /* Don't try to take fraction of space */
+        min-height: 60vh; /* Ensure editor has enough space */
+    }
+     .io-section {
+        flex-direction: column;
+         max-height: none; /* Remove max height */
+     }
+     .button-group {
+        margin-left: 0; /* Allow wrapping */
+     }
+}
