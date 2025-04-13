@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Practice Environment - Campus Bridge</title>
+
+    <!-- Link to your main CSS (optional, for consistent base styles like buttons/fonts) -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Link to specific CSS for this practice page -->
+    <link rel="stylesheet" href="css/practice.css"> <!-- Make sure you create this file (Step 2 from previous answer) -->
+
+    <!-- Link to CodeMirror CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.css">
+    <!-- Link to a CodeMirror theme -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/theme/material-darker.min.css">
+
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <div class="practice-container">
+        <header class="practice-header">
+            <h1><i class="fas fa-laptop-code"></i> Coding Practice Environment</h1>
+            <a href="dashboard.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+        </header>
+
+        <div class="practice-main">
+            <!-- Left Panel -->
+            <div class="practice-panel problem-panel">
+                <h2>Practice Space</h2>
+                <p>Select a language below, write your code in the editor, provide any necessary input, and run it using the buttons.</p>
+                <hr>
+                <div id="track-info-area">
+                    <p><strong>Track:</strong> <span id="track-name">General Practice</span></p>
+                </div>
+                <hr>
+                <p>Use the AI buttons for assistance:</p>
+                <ul>
+                    <li><i class="fas fa-lightbulb"></i> <strong>Hint:</strong> Get a general pointer.</li>
+                    <li><i class="fas fa-bug"></i> <strong>Debug:</strong> Find potential errors.</li>
+                    <li><i class="fas fa-star"></i> <strong>Review:</strong> Get style/quality feedback.</li>
+                </ul>
+            </div>
+
+            <!-- Right Panel -->
+            <div class="practice-panel editor-panel">
+                <div class="editor-controls">
+                    <!-- Controls remain the same -->
+                     <div class="control-group language-selector">
+                        <label for="language-select"><i class="fas fa-language"></i> Language:</label>
+                        <select id="language-select">
+                            <option value="python">Python</option>
+                            <option value="javascript">JavaScript (Node.js)</option>
+                            <option value="java">Java</option>
+                            <option value="cpp">C++</option>
+                            <option value="c">C</option>
+                        </select>
+                    </div>
+                    <div class="control-group button-group">
+                        <button id="run-code-btn" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Run Code
+                        </button>
+                    </div>
+                    <div class="control-group ai-button-group">
+                         <button id="get-hint-btn" class="btn btn-secondary btn-ai">
+                            <i class="fas fa-lightbulb"></i> Hint
+                        </button>
+                        <button id="debug-code-btn" class="btn btn-secondary btn-ai">
+                            <i class="fas fa-bug"></i> Debug
+                        </button>
+                        <button id="review-code-btn" class="btn btn-secondary btn-ai">
+                            <i class="fas fa-star"></i> Review
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Editor Container -->
+                <div id="code-editor-container" class="code-editor-container" aria-label="Code Editor">
+                    <!-- Editor will be initialized by js/practice.js -->
+                </div>
+
+                <!-- I/O Section remains the same -->
+                 <div class="io-section">
+                    <div class="input-area">
+                        <label for="code-stdin">Standard Input (stdin)</label>
+                        <textarea id="code-stdin" rows="4" placeholder="Enter input for your code here (if needed). Each line is a separate input line." aria-label="Standard Input"></textarea>
+                    </div>
+                    <div id="output-area" class="output-area">
+                        <h4><i class="fas fa-terminal"></i> Output / Results</h4>
+                        <pre id="output-content" aria-live="polite">Run code to see results.</pre>
+                    </div>
+                </div>
+
+                <!-- AI Feedback Area remains the same -->
+                 <div id="ai-feedback-area" class="ai-feedback-area">
+                    <h4><i class="fas fa-robot"></i> AI Assistance</h4>
+                    <div id="ai-content" aria-live="polite">Click AI buttons above for feedback on your code.</div>
+                 </div>
+            </div>
+        </div>
+
+        <footer class="practice-footer">
+            Powered by CodeMirror & Judge0 | AI Assistance via OpenRouter | Campus Bridge © 2024
+        </footer>
+    </div> <!-- end practice-container -->
+
+    <!-- JavaScript Libraries -->
+
+    <!-- CodeMirror Core JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/codemirror.min.js"></script>
+    <!-- CodeMirror Language Modes -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/mode/clike/clike.min.js"></script> <!-- C, C++, Java -->
+    <!-- CodeMirror Addons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/edit/closebrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/comment/comment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.15/addon/selection/active-line.js"></script>
+
+    <!-- Your Custom JavaScript Files - CORRECT ORDER! -->
+    <script src="js/config.js"></script>        <!-- 1. API Keys/URLs -->
+    <script src="js/ai_assistant.js"></script>  <!-- 2. AI Helper (uses config) -->
+    <script src="js/practice.js"></script>      <!-- 3. Practice Page Logic (uses config, ai_assistant) -->
+
+    <!-- REMOVED the temporary script block -->
+
+</body>
+</html>

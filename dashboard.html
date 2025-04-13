@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Bridge - Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <!-- CodeMirror CSS (Keep if needed for other features like 'Online Compiler') -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/material-darker.min.css">
+    <!-- Optional: Add CSS for other features if needed -->
+    <!-- <link rel="stylesheet" href="css/chatbot.css"> -->
+
+    <!-- REMOVED the <style> block for .coding-practice-layout as it's no longer needed here -->
+
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <!-- Assume logo is in an 'img' folder -->
+            <img src="img/logo.png" alt="Campus Bridge Logo" class="logo-small" onerror="this.style.display='none'">
+            <!-- Hide if logo not found -->
+            <h1>Campus Bridge</h1>
+            <div class="user-info">
+                <span id="user-name">User Name</span> | <span id="user-role">Role</span>
+                <button id="logout-button" class="btn btn-danger btn-sm">Logout</button> <!-- Added button classes -->
+            </div>
+        </header>
+
+        <div class="dashboard-body">
+            <nav class="sidebar" id="sidebar">
+                <!-- Sidebar links will be dynamically populated based on role -->
+                <!-- IMPORTANT: You will need to ensure your app.js adds the
+                     'Coding Tracks' link here for the student role, pointing
+                     to data-target="student-coding-tracks" -->
+                <ul>
+                    <!-- Example: <li><a href="#profile" data-target="profile">Profile</a></li> -->
+                </ul>
+            </nav>
+            <main class="main-content" id="main-content">
+                <!-- Content will be dynamically loaded here -->
+                <section id="welcome-message" class="content-section">
+                    <h2>Welcome to your Dashboard!</h2>
+                    <p>Select an option from the sidebar to get started.</p>
+                </section>
+
+                <!-- Dynamic Content Sections (initially hidden) -->
+
+                <!-- Student Sections -->
+                <section id="student-courses" class="content-section" style="display: none;">
+                    <h2>My Courses (LMS)</h2>
+                    <div id="student-courses-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="student-attendance" class="content-section" style="display: none;">
+                    <h2>My Attendance</h2>
+                    <div id="student-attendance-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="student-assignments" class="content-section" style="display: none;">
+                    <h2>My Assignments</h2>
+                    <div id="student-assignments-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <!-- Section for Coding Tracks (Already Correct) -->
+                <section id="student-coding-tracks" class="content-section" style="display: none;">
+                    <h2>Coding Tracks</h2>
+                    <div id="student-coding-tracks-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+
+                <!-- START *** REMOVED THIS SECTION *** -->
+                <!--
+                <section id="student-coding-practice" class="content-section" style="display: none;">
+                    <div id="student-coding-practice-content"><p><em>Loading coding practice area...</em></p></div>
+                </section>
+                -->
+                <!-- END *** REMOVED THIS SECTION *** -->
+
+                <section id="student-profile" class="content-section" style="display: none;">
+                    <h2>My Profile & Progress</h2>
+                    <div id="student-profile-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="student-group-code" class="content-section" style="display: none;">
+                    <h2>Group Code Rooms</h2>
+                    <div class="card">
+                        <p>Feature coming soon! Join collaborative coding sessions.</p>
+                    </div>
+                </section>
+                <section id="student-job-match" class="content-section" style="display: none;">
+                    <h2>Job Match Recommender</h2>
+                    <div id="student-job-match-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+
+                <!-- Faculty Sections (Keep as is) -->
+                <section id="faculty-dashboard" class="content-section" style="display: none;">
+                    <h2>Faculty Dashboard</h2>
+                    <div id="faculty-dashboard-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="faculty-manage-courses" class="content-section" style="display: none;">
+                    <h2>Manage Academic Courses</h2>
+                    <div id="faculty-manage-courses-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="faculty-manage-coding" class="content-section" style="display: none;">
+                    <h2>Manage Coding Assignments</h2>
+                    <div id="faculty-manage-coding-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="faculty-monitor-progress" class="content-section" style="display: none;">
+                    <h2>Monitor Student Progress</h2>
+                    <div id="faculty-monitor-progress-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+
+                <!-- Admin Sections (Keep as is) -->
+                <section id="admin-dashboard" class="content-section" style="display: none;">
+                    <h2>Admin Dashboard</h2>
+                    <div id="admin-dashboard-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="admin-skill-metrics" class="content-section" style="display: none;">
+                    <h2>Aggregate Skill Metrics</h2>
+                    <div id="admin-skill-metrics-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="admin-leaderboard" class="content-section" style="display: none;">
+                    <h2>Coding Leaderboard</h2>
+                    <div id="admin-leaderboard-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="admin-manage-tests" class="content-section" style="display: none;">
+                    <h2>Schedule Tests & Contests</h2>
+                    <div id="admin-manage-tests-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+                <section id="admin-reports" class="content-section" style="display: none;">
+                    <h2>Export Reports</h2>
+                    <div id="admin-reports-content">
+                        <p><em>Loading...</em></p>
+                    </div>
+                </section>
+
+                <!-- Optional: AI Chatbot Section (Keep as is) -->
+                <!-- ... -->
+
+                <!-- Optional: Online Compiler Section (Keep as is) -->
+                <!-- ... -->
+
+            </main>
+        </div>
+
+        <footer class="dashboard-footer">
+            <p>© 2024 Campus Bridge. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Libraries (CodeMirror Example - Keep if needed for 'Online Compiler' feature) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/clike/clike.min.js"></script>
+    <!-- C, C++, Java -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/python/python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
+    <!-- Add other modes as needed -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/matchbrackets.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/addon/edit/closebrackets.min.js"></script>
+
+    <!-- Your JS files - CORRECT ORDER -->
+    <script src="js/config.js"></script> <!-- 1. Config (API Key, URLs) - DO NOT COMMIT KEY -->
+    <script src="js/auth.js"></script> <!-- 2. Authentication functions (login/logout) -->
+    <script src="js/api.js"></script> <!-- 3. Mock API (for non-AI parts) -->
+    <script src="js/ai_assistant.js"></script> <!-- 4. AI Interaction Logic (callOpenRouter) -->
+    <script src="js/student.js"></script> <!-- 5. Student specific logic (uses config, api, ai_assistant) -->
+    <script src="js/faculty.js"></script> <!-- 6. Faculty specific logic (uses api) -->
+    <script src="js/admin.js"></script> <!-- 7. Admin specific logic (uses api) -->
+    <!-- Consider dedicated js for chatbot/compiler if they become complex -->
+    <script src="js/app.js"></script> <!-- 8. Main app logic (routing, initialization) -->
+
+</body>
+
+</html>
